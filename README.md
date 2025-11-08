@@ -1,9 +1,6 @@
 # 事業サイト（Next.js版）
 ## プロジェクト概要
-本プロジェクトは、インディーゲーム開発・プログラミング教育・YouTube配信事業を紹介する
-企業用Webサイトです。
-フロントエンドには**Next.js（Reactベース）**を使用し、1画面完結型（Navbar＋iframe切替構成）で実装されています。
-デプロイ先はVercelです。
+本プロジェクトは、インディーゲーム開発・プログラミング教育・YouTube配信事業を紹介する企業用Webサイトです。
 
 ## 使用技術
 |区分|使用技術|
@@ -120,12 +117,11 @@ https://zestark.com
 
 ## 補足
 ### Next.jsとiframe
-iframeを使う構成のため、Next.jsのルーティング機能は使用しません。
-→ Reactによる状態管理（useState）でiframeのsrcを切り替えます。
-→ navigationbarやボタンをReactコンポーネントとして使用するため。
-Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収めるWebサイト。
-**「画面遷移せずに、iframe内で各ページを切り替える」**スタイルのNext.js版SPA（Single Page Application）構成にしています。
-
+1. iframeを使う構成のため、Next.jsのルーティング機能は使用しません。<br>
+→ Reactによる状態管理（useState）でiframeのsrcを切り替えます。<br>
+→ navigationbarやボタンをReactコンポーネントとして使用するため。<br>
+Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収めるWebサイト。<br>
+**「画面遷移せずに、iframe内で各ページを切り替える」**スタイルのNext.js版SPA（Single Page Application）構成にしています。<br>
 ### レスポンシブ
 本サイトはPC版・タブレット版・スマホ版に対応しています。
 |デバイス種別|画面幅(px)|対応内容|
