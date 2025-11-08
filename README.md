@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 事業サイト（Next.js版）
+## プロジェクト概要
+本プロジェクトは、インディーゲーム開発・プログラミング教育・YouTube配信事業を紹介する
+企業用Webサイトです。
+フロントエンドには**Next.js（Reactベース）**を使用し、1画面完結型（Navbar＋iframe切替構成）で実装されています。
+デプロイ先はVercelです。
 
-## Getting Started
+## 使用技術
+|区分|使用技術|
+|---|---|
+|言語|TypeScript / JavaScript / HTML / CSS|
+|フレームワーク|Next.js 15（App Router構成）|
+|スタイリング|Tailwind CSS / CSS Modules|
+|開発環境|VSCode|
+|デプロイ|Vercel|
+|バージョン管理|GitHub|
 
-First, run the development server:
-
-```bash
+## セットアップ手順
+### node.jsのインストール
+node -v
+でパスの確認
+### 依存関係のインストール
+npm install
+### 開発サーバーの起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+ブラウザで次を開く：
+http://localhost:3000
+
+## ディレクトリ構成
+zestark-website/
+├── README.md
+│
+├── app/
+│   ├── favicon.ico
+│   ├── globals.css               # 全体共通スタイル（Tailwind含む）
+│   ├── layout.tsx                # 全体レイアウト（Navbar + iframeコンテナ）
+│   └── page.tsx                  # メインページ（iframeと連動）
+│
+├── components/
+│   ├── layout/
+│   │   └── Navbar.tsx            # ナビゲーションバー（ボタンでiframe切替）
+│   └── FrameContainer.tsx        # iframe管理用コンポーネント
+│
+├── pages/iframe/                 # iframeで読み込まれる実ページ
+│   ├── home.html
+│   ├── services.html
+│   ├── about.html
+│   ├── contact.html
+│   └── blog.html
+│
+├── public/
+│   ├── images/
+│   │   ├── bg-home.jpg
+│   │   ├── bg-services.jpg
+│   │   ├── bg-about.jpg
+│   │   └── bg-contact.jpg
+│   ├── icons/
+│   │   ├── file.svg
+│   │   ├── globe.svg
+│   │   ├── next.svg
+│   │   ├── vercel.svg
+│   │   └── window.svg
+│   └── logo.svg
+│
+├── styles/
+│   ├── variables.css             # カラーテーマ・変数（CSS変数）
+│   └── iframe.css                # iframe内ページ共通のCSS
+│
+├── next.config.ts
+├── postcss.config.mjs
+├── eslint.config.mjs
+├── package.json
+├── package-lock.json
+└── tsconfig.json
+
+## 構成のポイント
+|構成要素|役割|
+|---|---|
+|app/|Next.jsのApp Routerルート<br>layout.tsxにNavbar+iframe構成を実装|
+|app/layout.tsx|全体レイアウト定義<br>Navbar+iframe領域を配置|
+|app/page.tsx|メインページ<br>Navbarからiframeのsrcを制御|
+|Navbar.tsx|各ページボタン（Home / Services / About / Contact / Blog）を提供|
+|FrameContainer.tsx|iframeのsrcを受け取り<br>コンテンツを動的に切り替える|
+|pages/iframe/*.html|実際の事業紹介ページ<br>静的HTMLとしてiframe内で表示される|
+|public/images/|背景・ロゴなどの静的リソース|
+|styles/|共通CSSとiframeページ用CSSを分離|
+|components/layout/Navbar.tsx|iframeの切替を行うナビゲーションバー<br>状態管理（useState）でURL変更|
+|components/FrameContainer.tsx|iframeを1つだけ配置し、Navbarの操作に応じて表示内容を切り替える|
+|pages/iframe/|各事業ページを独立した静的HTMLとして配置<br>iframeで読み込まれる対象|
+|public/|静的ファイル（画像・SVG・ロゴ）<br>Next.jsが自動配信|
+|styles/|CSS変数・iframe専用スタイルなど、Next.jsのグローバルCSS外に分離|
+
+
+## ページ構成
+|ページ名|パス|概要|
+|---|---|---|
+|ホーム|/iframe/home.html|トップページ、全体紹介|
+|サービス|/iframe/services.html|ゲーム開発・教育・配信事業の内容|
+|会社紹介|/iframe/about.html|チーム・理念紹介|
+|お問い合わせ|/iframe/contact.html|連絡フォームやSNSリンク|
+|ブログ|/iframe/blog.html|活動報告・コラム|
+
+## デプロイ（Vercel）
+Vercelにログインし、GitHubリポジトリをインポート。
+自動で Next.js プロジェクトとして認識。
+npm run build が実行され、自動でデプロイ完了。
+
+デプロイ後、URL例：
+https://zestark.com
+
+## ブランチ運用ルール
+|ブランチ名|運用用途|使用用途|マージ条件|
+|---|---|---|---|
+|mainブランチ|本番運用用ブランチ。|Vercelなどへのデプロイ対象。|動作が安定しており、リリース可能な状態のみをマージ。|
+|developブランチ|開発の中心となるブランチ。|機能追加・修正ブランチの統合先。|動作確認済みのコードを随時マージ。|mainへのマージ前に最終レビューを実施。|
+|testブランチ|検証・テスト専用ブランチ。|新機能や修正の動作確認、デザイン確認などに使用。|動作確認後、問題なければdevelopへマージ。|
+
+## 補足
+### Next.jsとiframe
+iframeを使う構成のため、Next.jsのルーティング機能は使用しません。
+→ Reactによる状態管理（useState）でiframeのsrcを切り替えます。
+→ navigationbarやボタンをReactコンポーネントとして使用するため。
+Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収めるWebサイト。
+**「画面遷移せずに、iframe内で各ページを切り替える」**スタイルのNext.js版SPA（Single Page Application）構成にしています。
+
+### レスポンシブ
+本サイトはPC版・タブレット版・スマホ版に対応しています。
+|デバイス種別|画面幅(px)|対応内容|
+|---|---|---|
+|**PC版**|`1025px 以上`|最大レイアウト。ナビゲーション常時表示。|
+|**タブレット版**| `769px～1024px`||
+|**スマホ版**| `～ 768px`||
+
+```
+/* スマホ */
+@media (max-width: 768px) {
+  /* スマホ用スタイル */
+}
+
+/* タブレット */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* タブレット用スタイル */
+}
+
+/* PC */
+@media (min-width: 1025px) {
+  /* PC用スタイル */
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## リンク
+### Figma
+https://www.figma.com/design/82dGln3IyABPoP3B7cLhrX/%E4%BA%8B%E6%A5%AD%E7%94%A8Web%E3%82%B5%E3%82%A4%E3%83%88?node-id=10-18&p=f&t=9dYZgpLP64xEG2w4-0
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
