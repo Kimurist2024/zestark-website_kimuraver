@@ -121,7 +121,7 @@ https://zestark.com
 → Reactによる状態管理（useState）でiframeのsrcを切り替えます。<br>
 → navigationbarやボタンをReactコンポーネントとして使用するため。<br>
 Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収めるWebサイト。<br>
-**「画面遷移せずに、iframe内で各ページを切り替える」**スタイルのNext.js版SPA（Single Page Application）構成にしています。<br>
+「画面遷移せずに、iframe内で各ページを切り替える」スタイルのNext.js版SPA（Single Page Application）構成にしています。<br>
 ### レスポンシブ
 本サイトはPC版・タブレット版・スマホ版に対応しています。
 |デバイス種別|画面幅(px)|対応内容|
@@ -146,6 +146,11 @@ Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収め
   /* PC用スタイル */
 }
 ```
+## 参考ホームページ
+|ホームページ名|リンク|参考部品|どう生かすか|
+|---|---|---|
+|キネマシトラス|"https://kinemacitrus.biz/#"|ナビゲーションウィンドウ<br>フッター|要素のレイアウトをオマージュ|
+|スプラトゥーン（英語版）|"https://splatoon.nintendo.com/base/"|カスタマーサポート要素|画面下部にリンクと🄫マークを付ける|
 
 ## リンク
 ### Figma
