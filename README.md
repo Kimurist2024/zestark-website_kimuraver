@@ -176,6 +176,11 @@ Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収め
 無断転載・複製を禁じます
 🄫 2025 Zestark All Rights Reserved.
 
+### 検索
+node_module以外のディレクトリを検索
+```
+tree -I "__pycache__|node_module*"
+```
 ## リンク
 ### Figma
 https://www.figma.com/design/82dGln3IyABPoP3B7cLhrX/%E4%BA%8B%E6%A5%AD%E7%94%A8Web%E3%82%B5%E3%82%A4%E3%83%88?node-id=10-18&p=f&t=9dYZgpLP64xEG2w4-0
