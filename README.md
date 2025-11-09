@@ -1,6 +1,6 @@
-# 事業サイト（Next.js版）
+# 事業サイト詳細設計書
 ## プロジェクト概要
-本プロジェクトは、インディーゲーム開発・プログラミング教育・YouTube配信事業を紹介する企業用Webサイトです。
+本プロジェクトは、インディーゲーム開発・プログラミング教育・コンテンツ配信事業を紹介する企業用Webサイトです。
 
 ## 使用技術
 |区分|使用技術|
@@ -26,6 +26,7 @@ http://localhost:3000
 
 ## ディレクトリ構成
 ```
+
 zestark-website/
 ├── README.md
 │
@@ -36,16 +37,17 @@ zestark-website/
 │   └── page.tsx                  # メインページ（iframeと連動）
 │
 ├── components/
-│   ├── layout/
+│   ├── c-layout/
 │   │   └── Navbar.tsx            # ナビゲーションバー（ボタンでiframe切替）
 │   └── FrameContainer.tsx        # iframe管理用コンポーネント
 │
-├── pages/iframe/                 # iframeで読み込まれる実ページ
-│   ├── home.html
-│   ├── services.html
-│   ├── about.html
-│   ├── contact.html
-│   └── blog.html
+├── pages/
+│   └── iframe/                   # 自動生成されるHTMLファイル群（出力先）
+│       ├── home.html
+│       ├── services.html
+│       ├── about.html
+│       ├── contact.html
+│       └── blog.html
 │
 ├── public/
 │   ├── images/
@@ -62,15 +64,26 @@ zestark-website/
 │   └── logo.svg
 │
 ├── styles/
-│   ├── variables.css             # カラーテーマ・変数（CSS変数）
-│   └── iframe.css                # iframe内ページ共通のCSS
+│   ├── variables.css             # カラーテーマ・CSS変数
+│   ├── iframe.css                # iframe内ページ共通スタイル
+│   └── templates/                # HTMLテンプレート共通パーツ
+│       ├── head.html             # 共通<head>タグ部分
+│       └── footer.html           # 共通<footer>タグ部分
+│
+├── scripts/                      # TypeScriptスクリプトでHTMLを自動生成
+│   ├── data/
+│   │   └── pages.ts              # 各ページの内容を定義（タイトル・本文など）
+│   ├── templates/
+│   │   └── baseTemplate.ts       # HTMLテンプレート関数
+│   └── generateHtml.ts           # 自動生成スクリプトのメイン
 │
 ├── next.config.ts
 ├── postcss.config.mjs
 ├── eslint.config.mjs
+├── tsconfig.json
 ├── package.json
-├── package-lock.json
-└── tsconfig.json
+└── package-lock.json
+
 ```
 
 ## 構成のポイント
@@ -146,11 +159,22 @@ Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収め
   /* PC用スタイル */
 }
 ```
-## 参考ホームページ
+### 参考ホームページ
 |ホームページ名|リンク|参考部品|どう生かすか|
 |---|---|---|---|
 |キネマシトラス|"https://kinemacitrus.biz/#"|ナビゲーションウィンドウ<br>フッター|要素のレイアウトをオマージュ|
 |スプラトゥーン（英語版）|"https://splatoon.nintendo.com/base/"|カスタマーサポート要素|画面下部にリンクと🄫マークを付ける|
+
+### 運営
+- 事業名: Zestark
+- 主な事業: Webシステム開発及びソフトウェア開発 / IT教育事業 / コンテンツ配信
+- 所在地: 
+- 代表者: 
+
+### ライセンス
+このリポジトリの内容は、著作権により保護されています。
+無断転載・複製を禁じます
+🄫 2025 Zestark All Rights Reserved.
 
 ## リンク
 ### Figma
