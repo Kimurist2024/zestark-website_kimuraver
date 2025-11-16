@@ -27,11 +27,8 @@
 ----------------------------------------- */
 body {
   margin: 0;
-  background: #101828;
-  color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  overflow: hidden;
-  position: relative;
+  font-size: 16px;
 }
 
 /* 透過ノイズテクスチャ（擬似ノイズレイヤー） */
@@ -94,10 +91,4 @@ body::after {
   transition: transform 0.3s linear, opacity 0.25s ease-in-out;
   will-change: transform, opacity;
   pointer-events: none;
-}
-
-/* main を前面に出す */
-main {
-  position: relative;
-  z-index: 1;
 }

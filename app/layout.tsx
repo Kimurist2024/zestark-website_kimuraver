@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "../styles/globals.css";
 import StarryBackground from "../components/starry-background";
 
 const geistSans = Geist({
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Zestark | ゼスター",
   icons: {
-    icon: "/zestark-star.svg",
+    icon: "../public/zestark-star.svg",
   },
 };
 

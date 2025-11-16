@@ -39,7 +39,7 @@ zestark-website/
 ├── components/
 │   ├── c-layout/
 │   │   └── Navbar.tsx            # ナビゲーションバー（ボタンでiframe切替）
-│   └── FrameContainer.tsx        # iframe管理用コンポーネント
+│   └── frame-container.tsx        # iframe管理用コンポーネント
 |   └── starry-background.tsx     # 背景管理用コンポーネント
 |
 |
@@ -67,6 +67,7 @@ zestark-website/
 │
 ├── styles/
 │   ├── variables.css             # カラーテーマ・CSS変数
+│   ├── globals.css               # page.tsxのCSS変数
 │   ├── iframe.css                # iframe内ページ共通スタイル
 │   └── templates/                # HTMLテンプレート共通パーツ
 │       ├── head.html             # 共通<head>タグ部分
@@ -141,23 +142,23 @@ Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収め
 本サイトはPC版・タブレット版・スマホ版に対応しています。
 |デバイス種別|画面幅(px)|対応内容|
 |---|---|---|
-|**PC版**|`1025px 以上`|最大レイアウト。ナビゲーション常時表示。|
-|**タブレット版**| `769px～1024px`||
-|**スマホ版**| `～ 768px`||
+|**PC版**|`960px以上`|最大レイアウト。ナビゲーション常時表示。|
+|**タブレット版**| `768px～960px`||
+|**スマホ版**| `368px～767px`||
 
 ```
 /* スマホ */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* スマホ用スタイル */
 }
 
 /* タブレット */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 960px) {
   /* タブレット用スタイル */
 }
 
 /* PC */
-@media (min-width: 1025px) {
+@media (min-width: 960px) {
   /* PC用スタイル */
 }
 ```
@@ -181,7 +182,7 @@ Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収め
 ### 検索
 node_module以外のディレクトリを検索
 ```
-tree -I "__pycache__|node_module*"
+tree -I "node_module*"
 ```
 ## リンク
 ### Figma
