@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Zestark | ゼスター",
   icons: {
-    icon: "../public/zestark-star.svg",
+    icon: "/zestark-star.svg",
   },
 };
 
@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <StarryBackground />
         <main>{children}</main>
       </body>
     </html>
