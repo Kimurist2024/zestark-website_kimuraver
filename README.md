@@ -26,33 +26,37 @@ http://localhost:3000
 
 ## ディレクトリ構成
 ```
-
 zestark-website/
 ├── README.md
 │
 ├── app/
 │   ├── favicon.ico
-│   ├── globals.css               # 全体共通スタイル（Tailwind含む）
-│   ├── layout.tsx                # 全体レイアウト（Navbar + iframeコンテナ）
-│   └── page.tsx                  # メインページ（iframeと連動）
+│   ├── globals.css               # Tailwind含む全体CSS
+│   ├── layout.tsx                # 全体レイアウト（Navbar + 背景）
+│   └── page.tsx                  # 1ページ構成のSPAメイン（各セクションを配置）
 │
 ├── components/
-│   ├── c-layout/
-│   │   └── Navbar.tsx            # ナビゲーションバー（ボタンでiframe切替）
-│   └── frame-container.tsx        # iframe管理用コンポーネント
-|   └── starry-background.tsx     # 背景管理用コンポーネント
-|
-|
-├── pages/
-│   └── iframe/                   # 自動生成されるHTMLファイル群（出力先）
-│       ├── home.html
-│       ├── services.html
-│       ├── about.html
-│       ├── contact.html
-│       └── blog.html
+│   ├── layout/
+│   │   ├── Navbar.tsx            # ナビゲーションバー
+│   │   └── Footer.tsx            # フッター
+│   │
+│   ├── background/
+│   │   └── StarryBackground.tsx  # 星空背景アニメーション
+│   │
+│   ├── sections/                 # ページ内の大きなセクションをまとめる
+│   │   ├── HomeSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── BlogSection.tsx
+│   │   └── ContactSection.tsx
+│   │
+│   └── ui/                       # 再利用UI（ボタン、カード、タイトルなど）
+│       ├── SectionTitle.tsx
+│       ├── GlowButton.tsx
+│       └── Card.tsx
 │
 ├── public/
-│   ├── images/
+│   ├── images/                   # 背景写真
 │   │   ├── bg-home.jpg
 │   │   ├── bg-services.jpg
 │   │   ├── bg-about.jpg
@@ -66,19 +70,9 @@ zestark-website/
 │   └── logo.svg
 │
 ├── styles/
-│   ├── variables.css             # カラーテーマ・CSS変数
-│   ├── globals.css               # page.tsxのCSS変数
-│   ├── iframe.css                # iframe内ページ共通スタイル
-│   └── templates/                # HTMLテンプレート共通パーツ
-│       ├── head.html             # 共通<head>タグ部分
-│       └── footer.html           # 共通<footer>タグ部分
-│
-├── scripts/                      # TypeScriptスクリプトでHTMLを自動生成
-│   ├── data/
-│   │   └── pages.ts              # 各ページの内容を定義（タイトル・本文など）
-│   ├── templates/
-│   │   └── baseTemplate.ts       # HTMLテンプレート関数
-│   └── generateHtml.ts           # 自動生成スクリプトのメイン
+│   ├── variables.css             # CSS変数・カラーテーマ
+│   ├── sections.css              # セクションの共通スタイル
+│   └── animations.css            # アニメーション一元管理
 │
 ├── next.config.ts
 ├── postcss.config.mjs
@@ -88,33 +82,14 @@ zestark-website/
 └── package-lock.json
 
 ```
-
-## 構成のポイント
-|構成要素|役割|
-|---|---|
-|app/|Next.jsのApp Routerルート<br>layout.tsxにNavbar+iframe構成を実装|
-|app/layout.tsx|全体レイアウト定義<br>Navbar+iframe領域を配置|
-|app/page.tsx|メインページ<br>Navbarからiframeのsrcを制御|
-|Navbar.tsx|各ページボタン（Home / Services / About / Contact / Blog）を提供|
-|FrameContainer.tsx|iframeのsrcを受け取り<br>コンテンツを動的に切り替える|
-|pages/iframe/*.html|実際の事業紹介ページ<br>静的HTMLとしてiframe内で表示される|
-|public/images/|背景・ロゴなどの静的リソース|
-|styles/|共通CSSとiframeページ用CSSを分離|
-|components/layout/Navbar.tsx|iframeの切替を行うナビゲーションバー<br>状態管理（useState）でURL変更|
-|components/FrameContainer.tsx|iframeを1つだけ配置し、Navbarの操作に応じて表示内容を切り替える|
-|pages/iframe/|各事業ページを独立した静的HTMLとして配置<br>iframeで読み込まれる対象|
-|public/|静的ファイル（画像・SVG・ロゴ）<br>Next.jsが自動配信|
-|styles/|CSS変数・iframe専用スタイルなど、Next.jsのグローバルCSS外に分離|
-
-
 ## ページ構成
 |ページ名|パス|概要|
 |---|---|---|
-|ホーム|/iframe/home.html|トップページ、全体紹介|
-|サービス|/iframe/services.html|ゲーム開発・教育・配信事業の内容|
-|会社紹介|/iframe/about.html|チーム・理念紹介|
-|お問い合わせ|/iframe/contact.html|連絡フォームやSNSリンク|
-|ブログ|/iframe/blog.html|活動報告・コラム|
+|ホーム|/sections/HomeSection.tsx|トップページ、全体紹介|
+|サービス|/sections/ServicesSection.tsx|ゲーム開発・教育・配信事業の内容|
+|会社紹介|/sections/AboutSection.tsx|チーム・理念紹介|
+|お問い合わせ|/sections/ContactSection.tsx|連絡フォームやSNSリンク|
+|ブログ|/sections/BlogSection.tsx|活動報告・コラム|
 
 ## デプロイ（Vercel）
 Vercelにログインし、GitHubリポジトリをインポート。
@@ -132,12 +107,6 @@ https://zestark.com
 |test|検証・テスト専用ブランチ。|新機能や修正の動作確認、デザイン確認などに使用。|動作確認後、問題なければdevelopへマージ。|
 
 ## 補足
-### Next.jsとiframe
-1. iframeを使う構成のため、Next.jsのルーティング機能は使用しません。<br>
-→ Reactによる状態管理（useState）でiframeのsrcを切り替えます。<br>
-→ navigationbarやボタンをReactコンポーネントとして使用するため。<br>
-Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収めるWebサイト。<br>
-「画面遷移せずに、iframe内で各ページを切り替える」スタイルのNext.js版SPA（Single Page Application）構成にしています。<br>
 ### レスポンシブ
 本サイトはPC版・タブレット版・スマホ版に対応しています。
 |デバイス種別|画面幅(px)|対応内容|
@@ -162,11 +131,6 @@ Next.js構成をベースに、Navbar＋iframeで全ページを1画面に収め
   /* PC用スタイル */
 }
 ```
-### 参考ホームページ
-|ホームページ名|リンク|参考部品|どう生かすか|
-|---|---|---|---|
-|キネマシトラス|"https://kinemacitrus.biz/#"|ナビゲーションウィンドウ<br>フッター|要素のレイアウトをオマージュ|
-|スプラトゥーン（英語版）|"https://splatoon.nintendo.com/base/"|カスタマーサポート要素|画面下部にリンクと🄫マークを付ける|
 
 ### 運営
 - 事業名: Zestark
@@ -184,10 +148,90 @@ node_module以外のディレクトリを検索
 ```
 tree -I "node_module*"
 ```
+
+### DOM
+body
+`-header
+  |-common-section
+  |   |- h1
+  |   |- h2
+  |   |-navi-frame
+  |   |   |-nav-contents #HOME
+  |   |   |-nav-contents #SERVICES
+  |   |   |-nav-contents #ABOUT
+  |   |   |-nav-contents #BLOG
+  |   |   `-nav-contents #CONTACT
+  |   |- footer
+  |   |   `- copyright
+  |   `- div
+  |      `-zestark-logo.svg
+  |
+  |-home-section
+  |  `-button-item
+  |    |-go-to-service
+  |    `-go-to-contact
+  |
+  |-services-section
+  |   `-card-item
+  |     |- card1
+  |     |- card2
+  |     `- card3
+  |
+  |-aboutus-section
+  | `- aboutus-content
+  |     |- campany-introduce
+  |     |- future
+  |     |- data-item
+  |     |  |- data1
+  |     |  |- data2
+  |     |  `- data3
+  |     `- feature-item
+  |        |- feature1
+  |        |- feature2
+  |        `- feature3
+  |
+  |-blog-section
+  |     `- blog-item
+  |      |- blog-note
+  |      `- blog-qiita
+  |
+  `-contact-section
+   `- mail-content
+      |- div      
+      |   |- div
+      |   |   |- name
+      |   |   `- text-name
+      |   `- div
+      |      |- address
+      |      `- text-address
+      |- div
+      |   |- subject
+      |   `- text-subject
+      |
+      |- div
+      |  |- messeage
+      |  `- text-messeage
+      |
+      |- submit
+      |
+      `- sns-icon-item
+          |- div
+          |   `- discord-icon.svg
+          |- div
+          |   `- X-icon.svg
+          `- div
+             `- github-icon.svg
+
+### DOM補足
+1. card-item要素はTypeScriptでカード複製。要素の中にicon、h3タグ、pタグ、「詳しく見る」と書かれたhrefタグを内包。
+2. data-item要素はTypeScriptで要素複製。要素の中はtextタグ、div class="detail"の2つを内包。
+3. feature-item要素はTypeScriptで要素複製。要素の中はicon、h3タグ、pタグを内包。
+4. blog-item要素はTypeScriptでカード複製。要素の中に記事のタイトル、「続きを読む」と書かれたhrefタグを内包。
+
+```
 ## リンク
 ### Figma
 https://www.figma.com/design/82dGln3IyABPoP3B7cLhrX/%E4%BA%8B%E6%A5%AD%E7%94%A8Web%E3%82%B5%E3%82%A4%E3%83%88?node-id=10-18&p=f&t=9dYZgpLP64xEG2w4-0
 
 ### Github
 https://github.com/Magiri1115/zestark-website
-
