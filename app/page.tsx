@@ -1,61 +1,81 @@
 'use client';
 
-import React, { useState } from 'react';
-import StarryBackground from '../components/starry-background';
+import React from 'react';
 import Image from 'next/image';
 
+{/* ====== Layout ====== */} 
+import StarryBackground from '@/components/background/starry-background';
+import Navbar from '@/components/layout/navbar';
+import Footer from '@/components/layout/footer';
+
+{/* ====== Sections ====== */} 
+import HomeSection from '../components/sections/home-section';
+import ServicesSection from '../components/sections/services-section';
+import AboutSection from '../components/sections/about-section';
+import BlogSection from '../components/sections/blog-section';
+import ContactSection from '../components/sections/contact-section';
+
 export default function HomePage() {
-  const [page, setPage] = useState('home');
-
-  const navLabels = ['Home', 'Services', 'About', 'Blog', 'Contact'];
-
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black text-white">
+    <div className="relative w-full min-h-screen overflow-x-hidden bg-black text-white">
+
+      {/* 星空背景 */}
       <StarryBackground />
-      {/* ロゴ */}
-      <div className="logo-area">
-        <Image src="/zestark-logo.svg" alt="Zestark Logo" width={180} height={60} />
-      </div>
 
-      {/* ナビ & バナー */}
-      <div className="body-contents flex justify-between">
-        {/* バナー */}
-        <div className="main-contents left">
-          <div className="home-banners">
-            <div className="news-contents top">未来を照らす、事業の星。</div>
-            <div className="news-contents bottom">Zestark Inc.</div>
+      {/* ===== HEADER（ロゴ + ナビ） ===== */}
+      <header className="relative z-20 w-full">
+        <div className="container mx-auto flex items-center justify-between py-6 px-4">
+
+          {/* ロゴ */}
+          <div className="logo-area">
+            <Image
+              src="/logo.svg"
+              alt="Zestark Logo"
+              width={180}
+              height={60}
+              priority
+            />
           </div>
+
+          {/* ナビゲーション */}
+          <Navbar />
         </div>
+      </header>
 
-        {/* ナビ */}
-        <div className="main-contents right">
-          <nav className="navi-frame flex flex-col gap-2">
-            {navLabels.map((label) => (
-              <button
-                key={label}
-                className="nav-contents text-white"
-                onClick={() => setPage(label.toLowerCase())} // 状態で管理
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
+      {/* ====== MAIN CONTENT（各セクション）====== */}
+      <main className="relative z-10 w-full">
 
-      {/* iframe */}
-      <div id="iframe-container">
-        <iframe
-          id="main-iframe"
-          src={`/iframe/${page}.html`}
-          className="w-full h-full rounded-lg shadow-lg"
-        />
-      </div>
+        {/* Home */}
+        <section id="home-section">
+          <HomeSection />
+        </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="footer">© 2025 Zestark Inc. All rights reserved.</div>
-      </footer>
+        {/* Services */}
+        <section id="services-section">
+          <ServicesSection />
+        </section>
+
+        {/* About */}
+        <section id="aboutus-section">
+          <AboutSection />
+        </section>
+
+        {/* Blog */}
+        <section id="blog-section">
+          <BlogSection />
+        </section>
+
+        {/* Contact */}
+        <section id="contact-section">
+          <ContactSection />
+        </section>
+
+      </main>
+
+      {/* ===== FOOTER ===== */}
+      <Footer />
+
     </div>
   );
 }
+
