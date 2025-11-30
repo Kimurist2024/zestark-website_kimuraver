@@ -1,81 +1,89 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
-{/* ====== Layout ====== */} 
-import StarryBackground from '@/components/background/starry-background';
-import Navbar from '@/components/layout/navbar';
-import Footer from '@/components/layout/footer';
+/* Layout */
+import StarryBackground from '../components/background/starry-background';
+import Navbar from '../components/layout/navbar';
+import Footer from '../components/layout/footer';
 
-{/* ====== Sections ====== */} 
+/* Sections */
 import HomeSection from '../components/sections/home-section';
 import ServicesSection from '../components/sections/services-section';
 import AboutSection from '../components/sections/about-section';
 import BlogSection from '../components/sections/blog-section';
 import ContactSection from '../components/sections/contact-section';
 
-export default function HomePage() {
+export default function Page() {
+  const [currentSection, setCurrentSection] = useState('home');
+  const renderSection = () => {
+    switch (currentSection) {
+      case 'home':
+        return <HomeSection onChangeSection={setCurrentSection} />;
+      case 'services':
+        return <ServicesSection onChangeSection={setCurrentSection} />;
+      case 'aboutus':
+        return <AboutSection />;
+      case 'blog':
+        return <BlogSection />;
+      case 'contact':
+        return <ContactSection />;
+      default:
+        return <HomeSection onChangeSection={setCurrentSection} />;
+    }
+  };
+
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden bg-black text-white">
+    <main>
+      <div className="page-wrapper">
+        <StarryBackground />
 
-      {/* 星空背景 */}
-      <StarryBackground />
-
-      {/* ===== HEADER（ロゴ + ナビ） ===== */}
-      <header className="relative z-20 w-full">
-        <div className="container mx-auto flex items-center justify-between py-6 px-4">
-
-          {/* ロゴ */}
-          <div className="logo-area">
-            <Image
-              src="/logo.svg"
-              alt="Zestark Logo"
-              width={180}
-              height={60}
-              priority
-            />
+        {/* ----------------------------- */}
+        {/* header */}
+        {/* ----------------------------- */}
+        <div className="header-border fixed w-full z-50">
+          <div className="header-container mx-auto justify-between pt-8 px-4 sm:px-8 lg:px-16">
+            <div className="logo-item inline-flex items-center justify-center mb-4">
+              <div className="padding-top: 20px;">
+                <Image
+                  className="fixed-small"
+                  src="/zestark-star.svg"
+                  alt="Zestark Star Logo"
+                  width={96}
+                  height={77}
+                  priority
+                />
+              </div>
+              <div className="padding-top: 20px;">
+                <Image
+                  src="/zestark-logo.svg"
+                  alt="Zestark Logo"
+                  width={120}
+                  height={100}
+                  priority
+                />
+              </div>
+            </div>
+            {/* Navbar に関数を渡す */}
+            <div className="sections-wrapper">
+              <Navbar onChangeSection={setCurrentSection} />
+            </div>
           </div>
-
-          {/* ナビゲーション */}
-          <Navbar />
         </div>
-      </header>
 
-      {/* ====== MAIN CONTENT（各セクション）====== */}
-      <main className="relative z-10 w-full">
+        {/* ----------------------------- */}
+        {/* 中央の切替可能なセクション */}
+        {/* ----------------------------- */}
+        <div className="sections-wrapper mt-[160px]">
+          {renderSection()}
+        </div>
 
-        {/* Home */}
-        <section id="home-section">
-          <HomeSection />
-        </section>
-
-        {/* Services */}
-        <section id="services-section">
-          <ServicesSection />
-        </section>
-
-        {/* About */}
-        <section id="aboutus-section">
-          <AboutSection />
-        </section>
-
-        {/* Blog */}
-        <section id="blog-section">
-          <BlogSection />
-        </section>
-
-        {/* Contact */}
-        <section id="contact-section">
-          <ContactSection />
-        </section>
-
-      </main>
-
-      {/* ===== FOOTER ===== */}
-      <Footer />
-
-    </div>
+        {/* ----------------------------- */}
+        {/* footer */}
+        {/* ----------------------------- */}
+        <Footer />
+      </div>
+    </main>
   );
 }
-
