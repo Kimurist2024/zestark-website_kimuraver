@@ -45,7 +45,7 @@ export default function Page() {
         <div className="header-border fixed w-full z-50">
           <div className="header-container mx-auto justify-between pt-8 px-4 sm:px-8 lg:px-16">
             <div className="logo-item inline-flex items-center justify-center mb-4">
-              <div className="padding-top: 20px;">
+              <div className="contents-star">
                 <Image
                   className="fixed-small"
                   src="/zestark-star.svg"
@@ -55,7 +55,7 @@ export default function Page() {
                   priority
                 />
               </div>
-              <div className="padding-top: 20px;">
+              <div className="contents-logo">
                 <Image
                   src="/zestark-logo.svg"
                   alt="Zestark Logo"

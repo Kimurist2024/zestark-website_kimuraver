@@ -109,8 +109,8 @@ export default function StarryBackground() {
     // 最初に一個流しておく（optional）
     // createShootingStar();
 
-    // 5秒ごとに1つ生成
-    const interval = setInterval(createShootingStar, 5000);
+    // 3秒ごとに1つ生成
+    const interval = setInterval(createShootingStar, 3000);
 
     // クリーンアップ
     return () => {
