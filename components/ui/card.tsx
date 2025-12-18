@@ -1,3 +1,11 @@
+type ServiceCardProps = {
+  icon: string;
+  title: string;
+  text: React.ReactNode;
+  button: string;
+  onClick: () => void;
+};
+
 export default function ServiceCard({ icon, title, text, button, onClick }) {
   return (
     <div className="service-card">
