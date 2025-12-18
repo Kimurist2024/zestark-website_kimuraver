@@ -1,17 +1,22 @@
+<<<<<<< Updated upstream
 # 事業サイト（Next.js版）
+=======
+# 事業サイト要件定義書
+>>>>>>> Stashed changes
 ## プロジェクト概要
 本プロジェクトは、インディーゲーム開発・プログラミング教育・YouTube配信事業を紹介する企業用Webサイトです。
 
-## 使用技術
-|区分|使用技術|
-|---|---|
-|言語|TypeScript / JavaScript / HTML / CSS|
-|フレームワーク|Next.js 15（App Router構成）|
-|スタイリング|Tailwind CSS / CSS Modules|
-|開発環境|VSCode|
-|デプロイ|Vercel|
-|バージョン管理|GitHub|
+## 目的
+1. 事業内容の明確な説明
+2. 企業イメージ・ブランド価値の向上
+3. 問い合わせ・SNS導線の確保
+4. ブログによる活動発信
+## ターゲットユーザー
+1. ゲーム開発・IT分野に興味のある個人
+2. プログラミング学習者
+3. 業務委託・開発依頼を検討している企業・個人
 
+<<<<<<< Updated upstream
 ## セットアップ手順
 ### node.jsのインストール
 node -v
@@ -91,6 +96,8 @@ zestark-website/
 |styles/|CSS変数・iframe専用スタイルなど、Next.jsのグローバルCSS外に分離|
 
 
+=======
+>>>>>>> Stashed changes
 ## ページ構成
 |ページ名|パス|概要|
 |---|---|---|
@@ -100,12 +107,24 @@ zestark-website/
 |お問い合わせ|/iframe/contact.html|連絡フォームやSNSリンク|
 |ブログ|/iframe/blog.html|活動報告・コラム|
 
+## 対応デバイス
+1. PC
+2. タブレット
+3. スマートフォン
+## 運営情報
+事業名：Zestark
+主な事業：
+インディーゲーム開発
+プログラミング教育
+コンテンツ配信
+
 ## デプロイ（Vercel）
 Vercelにログインし、GitHubリポジトリをインポート。
 自動で Next.js プロジェクトとして認識。
 npm run build が実行され、自動でデプロイ完了。
 
 デプロイ後、URL例：
+<<<<<<< Updated upstream
 https://zestark.com
 
 ## ブランチ運用ルール
@@ -159,3 +178,6 @@ https://www.figma.com/design/82dGln3IyABPoP3B7cLhrX/%E4%BA%8B%E6%A5%AD%E7%94%A8W
 ### Github
 https://github.com/Magiri1115/zestark-website
 
+=======
+https://zestark.com
+>>>>>>> Stashed changes
