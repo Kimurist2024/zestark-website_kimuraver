@@ -7,11 +7,12 @@ type ServicesSectionProps = {
 export default function ServicesSection({ onChangeSection }: ServicesSectionProps) {
   return (
     <section id="services-section">
-      <h2>SERVICES</h2>
-      <p>私たちが提供する３つの事業領域</p>
+      <div className="services-container">
+        <h2>SERVICES</h2>
+        <p>私たちが提供する３つの事業領域</p>
+      </div>
 
-      <div className="card-container flex">
-
+      <div className="card-container grid grid-cols-3 gap-[40px]">
         <ServiceCard
           icon="/icon-seriousgame.svg"
           title="シリアスゲーム開発"
@@ -19,7 +20,6 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
           button="詳しく聞く"
           onClick={() => onChangeSection('contact')}
         />
-
         <ServiceCard
           icon="/icon-programming-education.svg"
           title="プログラミング教育"
@@ -27,7 +27,6 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
           button="詳しく聞く"
           onClick={() => onChangeSection('contact')}
         />
-
         <ServiceCard
           icon="/icon-programming-education.svg"
           title="コンテンツ配信"
@@ -35,8 +34,8 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
           button="詳しく聞く"
           onClick={() => onChangeSection('contact')}
         />
-
       </div>
+
     </section>
   );
 }
