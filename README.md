@@ -1,87 +1,17 @@
-# 事業サイト詳細設計書
+# 事業サイト要件定義書
 ## プロジェクト概要
 本プロジェクトは、インディーゲーム開発・プログラミング教育・コンテンツ配信事業を紹介する企業用Webサイトです。
 
-## 使用技術
-|区分|使用技術|
-|---|---|
-|言語|TypeScript / JavaScript / HTML / CSS|
-|フレームワーク|Next.js 15（App Router構成）|
-|スタイリング|Tailwind CSS / CSS Modules|
-|開発環境|VSCode|
-|デプロイ|Vercel|
-|バージョン管理|GitHub|
+## 目的
+1. 事業内容の明確な説明
+2. 企業イメージ・ブランド価値の向上
+3. 問い合わせ・SNS導線の確保
+4. ブログによる活動発信
+## ターゲットユーザー
+1. ゲーム開発・IT分野に興味のある個人
+2. プログラミング学習者
+3. 業務委託・開発依頼を検討している企業・個人
 
-## セットアップ手順
-### node.jsのインストール
-node -v
-でパスの確認
-### 依存関係のインストール
-npm install
-### 開発サーバーの起動
-npm run dev
-
-ブラウザで次を開く：
-http://localhost:3000
-
-## ディレクトリ構成
-```
-zestark-website/
-├── README.md
-│
-├── app/
-│   ├── favicon.ico
-│   ├── globals.css               # Tailwind含む全体CSS
-│   ├── layout.tsx                # 全体レイアウト（Navbar + 背景）
-│   └── page.tsx                  # 1ページ構成のSPAメイン（各セクションを配置）
-│
-├── components/
-│   ├── layout/
-│   │   ├── Navbar.tsx            # ナビゲーションバー
-│   │   └── Footer.tsx            # フッター
-│   │
-│   ├── background/
-│   │   └── StarryBackground.tsx  # 星空背景アニメーション
-│   │
-│   ├── sections/                 # ページ内の大きなセクションをまとめる
-│   │   ├── HomeSection.tsx
-│   │   ├── ServicesSection.tsx
-│   │   ├── AboutSection.tsx
-│   │   ├── BlogSection.tsx
-│   │   └── ContactSection.tsx
-│   │
-│   └── ui/                       # 再利用UI（ボタン、カード、タイトルなど）
-│       ├── SectionTitle.tsx
-│       ├── GlowButton.tsx
-│       └── Card.tsx
-│
-├── public/
-│   ├── images/                   # 背景写真
-│   │   ├── bg-home.jpg
-│   │   ├── bg-services.jpg
-│   │   ├── bg-about.jpg
-│   │   └── bg-contact.jpg
-│   ├── icons/
-│   │   ├── file.svg
-│   │   ├── globe.svg
-│   │   ├── next.svg
-│   │   ├── vercel.svg
-│   │   └── window.svg
-│   └── logo.svg
-│
-├── styles/
-│   ├── variables.css             # CSS変数・カラーテーマ
-│   ├── sections.css              # セクションの共通スタイル
-│   └── animations.css            # アニメーション一元管理
-│
-├── next.config.ts
-├── postcss.config.mjs
-├── eslint.config.mjs
-├── tsconfig.json
-├── package.json
-└── package-lock.json
-
-```
 ## ページ構成
 |ページ名|パス|概要|
 |---|---|---|
@@ -91,6 +21,17 @@ zestark-website/
 |お問い合わせ|/sections/ContactSection.tsx|連絡フォームやSNSリンク|
 |ブログ|/sections/BlogSection.tsx|活動報告・コラム|
 
+## 対応デバイス
+1. PC
+2. タブレット
+3. スマートフォン
+## 運営情報
+事業名：Zestark
+主な事業：
+インディーゲーム開発
+プログラミング教育
+コンテンツ配信
+
 ## デプロイ（Vercel）
 Vercelにログインし、GitHubリポジトリをインポート。
 自動で Next.js プロジェクトとして認識。
@@ -98,140 +39,3 @@ npm run build が実行され、自動でデプロイ完了。
 
 デプロイ後、URL例：
 https://zestark.com
-
-## ブランチ運用ルール
-|ブランチ名|運用用途|使用用途|マージ条件|
-|---|---|---|---|
-|main|本番運用用ブランチ。|Vercelなどへのデプロイ対象。|動作が安定しており、リリース可能な状態のみをマージ。|
-|develop|開発の中心となるブランチ。|機能追加・修正ブランチの統合先。|動作確認済みのコードを随時マージ。|mainへのマージ前に最終レビューを実施。|
-|test|検証・テスト専用ブランチ。|新機能や修正の動作確認、デザイン確認などに使用。|動作確認後、問題なければdevelopへマージ。|
-
-## 補足
-### レスポンシブ
-本サイトはPC版・タブレット版・スマホ版に対応しています。
-|デバイス種別|画面幅(px)|対応内容|
-|---|---|---|
-|**PC版**|`960px以上`|最大レイアウト。ナビゲーション常時表示。|
-|**タブレット版**| `768px～960px`||
-|**スマホ版**| `368px～767px`||
-
-```
-/* スマホ */
-@media (max-width: 767px) {
-  /* スマホ用スタイル */
-}
-
-/* タブレット */
-@media (min-width: 768px) and (max-width: 960px) {
-  /* タブレット用スタイル */
-}
-
-/* PC */
-@media (min-width: 960px) {
-  /* PC用スタイル */
-}
-```
-
-### 運営
-- 事業名: Zestark
-- 主な事業: Webシステム開発及びソフトウェア開発 / IT教育事業 / コンテンツ配信
-- 所在地: 
-- 代表者: 
-
-### ライセンス
-このリポジトリの内容は、著作権により保護されています。
-無断転載・複製を禁じます
-🄫 2025 Zestark All Rights Reserved.
-
-### 検索
-node_module以外のディレクトリを検索
-```
-tree -I "node_module*"
-```
-
-### DOM
-body
-`-header
-  |-common-section
-  |   |- h1
-  |   |- h2
-  |   |-navi-frame
-  |   |   |-nav-contents #HOME
-  |   |   |-nav-contents #SERVICES
-  |   |   |-nav-contents #ABOUT
-  |   |   |-nav-contents #BLOG
-  |   |   `-nav-contents #CONTACT
-  |   |- footer
-  |   |   `- copyright
-  |   `- div
-  |      `-zestark-logo.svg
-  |
-  |-home-section
-  |  `-button-item
-  |    |-go-to-service
-  |    `-go-to-contact
-  |
-  |-services-section
-  |   `-card-item
-  |     |- card1
-  |     |- card2
-  |     `- card3
-  |
-  |-aboutus-section
-  | `- aboutus-content
-  |     |- campany-introduce
-  |     |- future
-  |     |- data-item
-  |     |  |- data1
-  |     |  |- data2
-  |     |  `- data3
-  |     `- feature-item
-  |        |- feature1
-  |        |- feature2
-  |        `- feature3
-  |
-  |-blog-section
-  |     `- blog-item
-  |      |- blog-note
-  |      `- blog-qiita
-  |
-  `-contact-section
-   `- mail-content
-      |- div      
-      |   |- div
-      |   |   |- name
-      |   |   `- text-name
-      |   `- div
-      |      |- address
-      |      `- text-address
-      |- div
-      |   |- subject
-      |   `- text-subject
-      |
-      |- div
-      |  |- messeage
-      |  `- text-messeage
-      |
-      |- submit
-      |
-      `- sns-icon-item
-          |- div
-          |   `- discord-icon.svg
-          |- div
-          |   `- X-icon.svg
-          `- div
-             `- github-icon.svg
-
-### DOM補足
-1. card-item要素はTypeScriptでカード複製。要素の中にicon、h3タグ、pタグ、「詳しく見る」と書かれたhrefタグを内包。
-2. data-item要素はTypeScriptで要素複製。要素の中はtextタグ、div class="detail"の2つを内包。
-3. feature-item要素はTypeScriptで要素複製。要素の中はicon、h3タグ、pタグを内包。
-4. blog-item要素はTypeScriptでカード複製。要素の中に記事のタイトル、「続きを読む」と書かれたhrefタグを内包。
-
-```
-## リンク
-### Figma
-https://www.figma.com/design/82dGln3IyABPoP3B7cLhrX/%E4%BA%8B%E6%A5%AD%E7%94%A8Web%E3%82%B5%E3%82%A4%E3%83%88?node-id=10-18&p=f&t=9dYZgpLP64xEG2w4-0
-
-### Github
-https://github.com/Magiri1115/zestark-website
