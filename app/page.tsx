@@ -42,7 +42,7 @@ export default function Page() {
         {/* ----------------------------- */}
         {/* header */}
         {/* ----------------------------- */}
-        <div className="header-border fixed w-full z-50">
+        <div className="header-border w-full z-50">
           <div className="header-container mx-auto justify-between pt-8 px-4 sm:px-8 lg:px-16">
             <div className="logo-item inline-flex items-center justify-center mb-4">
               <div className="contents-star">
@@ -66,7 +66,7 @@ export default function Page() {
               </div>
             </div>
             {/* Navbar に関数を渡す */}
-            <div className="sections-wrapper">
+            <div className="navi-wrapper">
               <Navbar onChangeSection={setCurrentSection} />
             </div>
           </div>
@@ -75,8 +75,10 @@ export default function Page() {
         {/* ----------------------------- */}
         {/* 中央の切替可能なセクション */}
         {/* ----------------------------- */}
-        <div className="sections-wrapper mt-[160px]">
-          {renderSection()}
+        <div className="header-offset">
+          <div className="sections-wrapper">
+            {renderSection()}
+          </div>
         </div>
 
         {/* ----------------------------- */}
