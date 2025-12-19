@@ -48,7 +48,6 @@ zestark-website/
 │   │   └── ContactSection.tsx
 │   │
 │   └── ui/                       # 再利用UI（ボタン、カード、タイトルなど）
-│       ├── SectionTitle.tsx
 │       ├── GlowButton.tsx
 │       └── Card.tsx
 │
@@ -68,7 +67,7 @@ zestark-website/
 │
 ├── styles/
 │   ├── variables.css             # CSS変数・カラーテーマ
-│   ├── sections.css              # セクションの共通スタイル
+│   ├── style.css              # セクションの共通スタイル
 │   └── animations.css            # アニメーション一元管理
 │
 ├── next.config.ts

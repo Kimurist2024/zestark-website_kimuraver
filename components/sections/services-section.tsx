@@ -12,7 +12,7 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
         <p>私たちが提供する３つの事業領域</p>
       </div>
 
-      <div className="card-container grid grid-cols-3 gap-[40px]">
+      <div className="card-container grid grid-cols-3 gap-[64px]">
         <ServiceCard
           icon="/icons/indie-game.svg"
           title="シリアスゲーム開発"

@@ -189,6 +189,12 @@ main {
     line-height: 24px;
   }
 }
+/* ================================
+   tag
+================================ */
+p {
+  padding-bottom: 16px;
+}
 
 /* ================================
    HOME
@@ -223,7 +229,9 @@ main {
 }
 
 .service-icon {
-  margin-bottom: 12px;
+  border-radius: 20px;
+  padding: 8px;
+  background-color: var(--card-background);
 }
 
 .service-icon img {

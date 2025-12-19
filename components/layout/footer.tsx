@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer-wrapper">
       <div className="footer-inner">
-        <p className="footer-copy">&copy; {year} Zestark. All Rights Reserved.</p>
+        <small className="footer-copy">&copy; {year} Zestark. All Rights Reserved.</small>
         <nav className="footer-nav">
           <a href="#home-section">Home</a>
           <a href="#services-section">Services</a>

@@ -123,19 +123,18 @@ body {
   width: 100%;
   text-align: center;
   color: #ddd;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-inner {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 8px auto;
 }
 
 .footer-copy {
   font-size: 14px;
-  margin-bottom: 20px;
+  line-height: 24px;
   opacity: 0.8;
 }
 
@@ -143,6 +142,10 @@ body {
   display: none;
 }
 
+small {
+  font-size: 24px;
+  line-height: 32px;
+}
 @media (max-width: 767px) {
   .footer-nav {
     display: flex;
