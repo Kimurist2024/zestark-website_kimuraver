@@ -267,7 +267,39 @@ p {
 /* ================================
    ABOUT
 ================================ */
+.about-container {
+  gap: 48px;
+  margin: 32px;
+  justify-content: center;
+}
 
+.about-icon img {
+  width: 44px;
+  height: 44px;
+  color: var(--color-gold);
+  filter: drop-shadow(0 0 6px var(--color-gold-shadow));
+}
+
+.about-introduce-container {
+    align-items: center;
+    gap: 24px;
+}
+
+.about-icon {
+  border-radius: 20px;
+  padding: 8px;
+  background-color: var(--card-background);
+}
+
+.about-features {
+  background-color: #121624e6;
+  border: 1px solid #ffffff12;
+  border-radius: 20px;
+  flex-direction: column;
+  transition: border-color .3s, box-shadow .3s;
+  display: flex;
+  padding: 0 24px;
+}
 /* ================================
    BLOG
 ================================ */
