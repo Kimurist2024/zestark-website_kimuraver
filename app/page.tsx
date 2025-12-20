@@ -2,13 +2,15 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-
-/* Layout */
+{/* ----------------------------- */}
+{/* Layout */}
+{/* ----------------------------- */}
 import StarryBackground from '../components/background/starry-background';
 import Navbar from '../components/layout/navbar';
 import Footer from '../components/layout/footer';
-
-/* Sections */
+{/* ----------------------------- */}
+{/* Sections */}
+{/* ----------------------------- */}
 import HomeSection from '../components/sections/home-section';
 import ServicesSection from '../components/sections/services-section';
 import AboutSection from '../components/sections/about-section';
