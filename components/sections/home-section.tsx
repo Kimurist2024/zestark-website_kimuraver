@@ -6,8 +6,8 @@ export default function HomeSection({ onChangeSection }: HomeSectionProps) {
   return (
     <section id="home-section">
       <div className="w-full flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text leading-tight">
-          青き先駆、黒き革新
+        <h1>
+          青き先駆・黒き革新
         </h1>
         <p className="button-container text-xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto">
           インディーゲーム開発・プログラミング教育・コンテンツ配信事業を通じて<br />
