@@ -2,15 +2,20 @@ export default function AboutSection() {
   return (
     <section id="about-section">
       <div className="about-container flex gap-8">
-        <div>
+        <div className="about-items">
           <h2>ABOUT US</h2>
-          <p>
-            Zestarkは、テクノロジーとクリエイティビティの融合を追求します。<br />
-            「青き先駆、黒き革新」という理念のもと、常に新しい挑戦を続けていきます。
-          </p>
-          <p>
-            皆様とともに未来を切り拓くパートナーであり続けることが私たちの使命です。
-          </p>
+          <div>
+            <div className="text-items">
+              <p>
+                Zestarkは、課題を整理し、最適な形でシステムに落とし込む
+                "設計力"を強みとする技術チームです。
+              </p>
+              <p>
+                技術と創造性を掛け合わせ、持続可能で価値ある仕組みづくりを通じて、
+                お客様とともに未来を形にしていくことが私たちの使命です。
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="about-features flex flex-col gap-4">

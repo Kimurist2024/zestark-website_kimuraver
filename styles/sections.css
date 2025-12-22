@@ -171,6 +171,11 @@ p {
   margin-top: 32px;
 }
 
+.home-section-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
 /* ================================
    SERVICES
 ================================ */
@@ -221,7 +226,6 @@ p {
   line-height: 1.8;
   text-align: center;
   color: #cfd6ff;
-  margin-bottom: 28px;
 }
 
 .service-card button {
@@ -239,6 +243,10 @@ p {
   margin: 32px;
   justify-content: center;
 }
+.about-items {
+  width: 60%;
+}
+
 
 .about-icon img {
   width: 44px;

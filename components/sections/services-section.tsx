@@ -14,12 +14,11 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
 
       <div className="card-container grid grid-cols-3 gap-[64px]">
         <ServiceCard
-          icon="/icons/indie-game.svg"
-          title="シリアスゲーム開発"
+          icon="/icons/technique.svg"
+          title="システム・アーキテクチャ設計"
           text={
             <>
-            独創的なアイデアと技術力を融合することで<br />
-            課題解決を後押しするゲームを開発します。
+            要件や課題を整理し、保守性・拡張性を考慮したシステム構造へと落とし込みます。
             </>
           }
           button="詳しく聞く"
@@ -27,11 +26,10 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
         />
         <ServiceCard
           icon="/icons/code.svg"
-          title="プログラミング教育"
+          title="技術教育・設計レビュー"
           text={
             <>
-            次世代のエンジニアを育成するための<br />
-            実践的な教育プログラムを提供します。
+            「なぜその設計にするのか」を重視した技術教育と設計レビューを行います。
             </>
           }
           button="詳しく聞く"
@@ -42,8 +40,7 @@ export default function ServicesSection({ onChangeSection }: ServicesSectionProp
           title="コンテンツ発信"
           text={
             <>
-            AIなどの最新技術をnoteやDiscordを通じて<br />
-            発信し、価値のある知識共有を促進します。
+            システム設計や技術選定を中心にnoteやDiscordを通じて学びあえる場を提供します。
             </>
           }
           button="詳しく聞く"
