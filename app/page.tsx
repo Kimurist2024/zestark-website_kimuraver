@@ -1,65 +1,93 @@
-"use client";
-import React from "react";
-import StarryBackground from "../components/starry-background";
-import Image from "next/image";
+'use client';
 
-export default function HomePage() {
+import React, { useState } from 'react';
+import Image from 'next/image';
+{/* ----------------------------- */}
+{/* Layout */}
+{/* ----------------------------- */}
+import StarryBackground from '../components/background/starry-background';
+import Navbar from '../components/layout/navbar';
+import Footer from '../components/layout/footer';
+{/* ----------------------------- */}
+{/* Sections */}
+{/* ----------------------------- */}
+import HomeSection from '../components/sections/home-section';
+import ServicesSection from '../components/sections/services-section';
+import AboutSection from '../components/sections/about-section';
+import BlogSection from '../components/sections/blog-section';
+import ContactSection from '../components/sections/contact-section';
+
+export default function Page() {
+  const [currentSection, setCurrentSection] = useState('home');
+  const renderSection = () => {
+    switch (currentSection) {
+      case 'home':
+        return <HomeSection onChangeSection={setCurrentSection} />;
+      case 'services':
+        return <ServicesSection onChangeSection={setCurrentSection} />;
+      case 'aboutus':
+        return <AboutSection />;
+      case 'blog':
+        return <BlogSection />;
+      case 'contact':
+        return <ContactSection />;
+      default:
+        return <HomeSection onChangeSection={setCurrentSection} />;
+    }
+  };
+
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black text-white">
+    <main>
+      <div className="page-wrapper">
+        <StarryBackground />
 
-      <StarryBackground />
-
-      {/* ロゴ */}
-      <div className="logo-area">
-        <Image src="/zestark-logo.svg" alt="Zestark Logo" width={180} height={60} />
-      </div>
-
-      {/* ナビ & バナー　*/}
-      <div className="body-contents">
-
-        {/* バナー */}
-        <div className="main-contents left">
-          <div className="home-banners">
-            <div className="news-contents top">未来を照らす、事業の星。</div>
-            <div className="news-contents bottom">Zestark Inc.</div>
+        {/* ----------------------------- */}
+        {/* header */}
+        {/* ----------------------------- */}
+        <div className="header-border w-full z-50">
+          <div className="header-container mx-auto justify-between pt-8 px-4 sm:px-8 lg:px-16">
+            <div className="logo-item inline-flex items-center justify-center mb-4">
+              <div className="contents-star">
+                <Image
+                  className="fixed-small"
+                  src="/zestark-star.svg"
+                  alt="Zestark Star Logo"
+                  width={96}
+                  height={77}
+                  priority
+                />
+              </div>
+              <div className="contents-logo">
+                <Image
+                  src="/zestark-logo.svg"
+                  alt="Zestark Logo"
+                  width={120}
+                  height={100}
+                  priority
+                />
+              </div>
+            </div>
+            {/* Navbar に関数を渡す */}
+            <div className="navi-wrapper">
+              <Navbar onChangeSection={setCurrentSection} />
+            </div>
           </div>
         </div>
 
-        {/* ナビ */}
-        <div className="main-contents right">
-          <nav className="navi-frame">
-            {["Home", "Services", "About", "Blog", "Contact"].map((label) => (
-              <button
-                key={label}
-                className="nav-contents text-white"
-                onClick={() =>
-                  document
-                    .getElementById("main-iframe")
-                    ?.setAttribute("src", `/iframe/${label.toLowerCase()}.html`)
-                }
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
+        {/* ----------------------------- */}
+        {/* 中央の切替可能なセクション */}
+        {/* ----------------------------- */}
+        <div className="header-offset">
+          <div className="sections-wrapper">
+            {renderSection()}
+          </div>
         </div>
-      </div>
 
-      {/* iframe（手前） */}
-      <div id="iframe-container">
-        <iframe
-          id="main-iframe"
-          src="/iframe/home.html"
-          className="w-full h-full rounded-lg shadow-lg"
-        />
+        {/* ----------------------------- */}
+        {/* footer */}
+        {/* ----------------------------- */}
+        <Footer />
       </div>
-
-      {/* Footer */}
-      <footer>
-        <div className="footer">
-          © 2025 Zestark Inc. All rights reserved.
-        </div>
-      </footer>
-    </div>
+    </main>
   );
 }

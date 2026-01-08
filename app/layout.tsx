@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "../styles/globals.css";
-import StarryBackground from "../components/starry-background";
+import "../styles/sections.css";
+import "../styles/variables.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Zestark | ゼスター",
   icons: {
-    icon: "../public/zestark-star.svg",
+    icon: "/zestark-star.svg",
   },
 };
 
@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <StarryBackground />
         <main>{children}</main>
       </body>
     </html>

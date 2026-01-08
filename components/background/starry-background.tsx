@@ -2,11 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * StarryBackground
- * - 背景の小さな星（点滅 / 出現）を生成
- * - 5秒ごとに流れ星を1つ生成（表示時間 0.3s、フェードイン/フェードアウト）
- */
+/* -----------------------------------------
+  StarryBackground
+  背景の小さな星（点滅 / 出現）を生成
+  5秒ごとに流れ星を1つ生成（表示時間 0.3s、フェードイン/フェードアウト）
+----------------------------------------- */
+
 export default function StarryBackground() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -108,8 +109,8 @@ export default function StarryBackground() {
     // 最初に一個流しておく（optional）
     // createShootingStar();
 
-    // 5秒ごとに1つ生成
-    const interval = setInterval(createShootingStar, 5000);
+    // 3秒ごとに1つ生成
+    const interval = setInterval(createShootingStar, 3000);
 
     // クリーンアップ
     return () => {
