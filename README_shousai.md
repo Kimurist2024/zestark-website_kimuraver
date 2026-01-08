@@ -48,7 +48,6 @@ zestark-website/
 │   │   └── ContactSection.tsx
 │   │
 │   └── ui/                       # 再利用UI（ボタン、カード、タイトルなど）
-│       ├── SectionTitle.tsx
 │       ├── GlowButton.tsx
 │       └── Card.tsx
 │
@@ -68,7 +67,7 @@ zestark-website/
 │
 ├── styles/
 │   ├── variables.css             # CSS変数・カラーテーマ
-│   ├── sections.css              # セクションの共通スタイル
+│   ├── style.css              # セクションの共通スタイル
 │   └── animations.css            # アニメーション一元管理
 │
 ├── next.config.ts
@@ -128,12 +127,6 @@ https://zestark.com
   /* PC用スタイル */
 }
 ```
-
-### 運営
-- 事業名: Zestark
-- 主な事業: Webシステム開発及びソフトウェア開発 / IT教育事業 / コンテンツ配信
-- 所在地: 
-- 代表者: 
 
 ### ライセンス
 このリポジトリの内容は、著作権により保護されています。

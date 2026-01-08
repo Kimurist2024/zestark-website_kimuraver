@@ -1,26 +1,236 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* -----------------------------------------
+   カラーテーマ
+----------------------------------------- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --headerBackground: rgba(2 6 23 / 0.8);
+  --headerBorder: rgba(31 41 55);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* -----------------------------------------
+   全体スタイル
+----------------------------------------- */
+body {
+  margin: 0;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.page-wrapper, .footer-wrapper {
+  background-color: var(--headerBackground);
+}
+
+/* -----------------------------------------
+   page.tsx
+----------------------------------------- */
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: black;
+  color: #ffffff;
+}
+
+.header-border {
+  border-bottom: 1px solid var(--headerBorder);
+  backdrop-filter: blur(10px);
+  padding: 16px 24px;
+}
+
+.header-container {
+    background-color: var(--headerBg);
+    align-items: center;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+}
+
+.logo-item {
+  padding-left: 15vw;
+}
+
+.contents-logo {
+  padding-top: 10px;
+}
+
+.contents-star {
+  padding-top: 15px;
+}
+
+.main-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.section-block {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.header-offset {
+  padding-top: 4vh;
+}
+/* ------------------------------
+   navbar.tsx
+------------------------------ */
+
+.navi-wrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 10%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 45%;
+  height: 100%;
+}
+
+.navbar-divst {
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.navbar-divst a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-divst a:hover {
+  opacity: 0.7;
+}
+
+/* ------------------------------
+   footer.tsx
+------------------------------ */
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  text-align: center;
+  color: #ddd;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 8px auto;
+}
+
+.footer-copy {
+  font-size: 14px;
+  line-height: 24px;
+  opacity: 0.8;
+}
+
+.footer-nav {
+  display: none;
+}
+
+small {
+  font-size: 24px;
+  line-height: 32px;
+}
+@media (max-width: 767px) {
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.footer-nav a {
+  font-size: 14px;
+  color: #aaa;
+  text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: white;
+  opacity: 1;
+}
+
+/* -----------------------------------------
+   星空スタイル
+----------------------------------------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4AWNggAJQDwAB9QECxHVJkQAAAABJRU5ErkJggg==");
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 星空コンテナ */
+.starry-sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 通常の星 */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation:
+    twinkle 2s infinite ease-in-out alternate,
+    appear 12s infinite ease-in-out;
+  transform: translateZ(0);
+}
+
+/* キラキラ */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* ゆらぎ */
+@keyframes appear {
+  0% { opacity: 0; }
+  30% { opacity: 0.6; }
+  70% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* 流れ星 */
+.shooting-star {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0.9) 40%,
+    rgba(255,255,255,0.4) 70%,
+    rgba(255,255,255,0) 100%
+  );
+  border-radius: 1px;
+  opacity: 0;
+  transform-origin: left center;
+  transition: transform 0.3s linear, opacity 0.25s ease-in-out;
+  will-change: transform, opacity;
+  pointer-events: none;
 }
