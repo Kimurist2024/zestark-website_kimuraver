@@ -104,12 +104,37 @@ body {
 .navbar-divst a {
   text-decoration: none;
   color: white;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, transparent, transparent);
+  transition: all 0.3s ease;
+}
+
+.navbar-divst a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .navbar-divst a:hover {
-  opacity: 0.7;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  color: #60a5fa;
+  transform: translateY(-2px);
+}
+
+.navbar-divst a:hover::before {
+  width: 80%;
 }
 
 /* ------------------------------

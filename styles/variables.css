@@ -5,6 +5,26 @@
   --color-gold: #f5d76e;
   --color-gold-shadow: rgba(245, 215, 110, 0.35);
   --card-background: #0f172a;
+
+  /* New vibrant colors */
+  --color-primary: #3b82f6;  /* Blue */
+  --color-primary-shadow: rgba(59, 130, 246, 0.4);
+  --color-secondary: #8b5cf6;  /* Purple */
+  --color-secondary-shadow: rgba(139, 92, 246, 0.4);
+  --color-accent: #ec4899;  /* Pink */
+  --color-accent-shadow: rgba(236, 72, 153, 0.4);
+  --color-success: #10b981;  /* Green */
+  --color-success-shadow: rgba(16, 185, 129, 0.4);
+  --color-warning: #f59e0b;  /* Orange */
+  --color-warning-shadow: rgba(245, 158, 11, 0.4);
+  --color-info: #06b6d4;  /* Cyan */
+  --color-info-shadow: rgba(6, 182, 212, 0.4);
+
+  /* Gradient colors */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
 /* ================================

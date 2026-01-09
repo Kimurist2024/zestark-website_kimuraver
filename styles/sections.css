@@ -184,33 +184,71 @@ p {
 }
 
 .service-card {
-  background-color: rgba(18, 22, 36, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 20px;
-  padding: 24px 40px;
+  background: linear-gradient(135deg, rgba(18, 22, 36, 0.95), rgba(30, 35, 55, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 32px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
 
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
 }
 
 .service-card:hover {
-  border-color: rgba(100, 140, 255, 0.4);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transform: translateY(-8px);
+  border-color: rgba(100, 140, 255, 0.5);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25);
+}
+
+.service-card:hover::before {
+  opacity: 0.05;
 }
 
 .service-icon {
-  border-radius: 20px;
-  padding: 8px;
-  background-color: var(--card-background);
+  border-radius: 24px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
 }
 
 .service-icon img {
   width: 44px;
   height: 44px;
-  color: var(--color-gold);
-  filter: drop-shadow(0 0 6px var(--color-gold-shadow));
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+/* Different colors for each service card */
+.service-card:nth-child(1) .service-icon {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
+}
+
+.service-card:nth-child(2) .service-icon {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+}
+
+.service-card:nth-child(3) .service-icon {
+  background: linear-gradient(135deg, var(--color-success), var(--color-warning));
 }
 
 .service-card h3 {
@@ -247,12 +285,11 @@ p {
   width: 60%;
 }
 
-
 .about-icon img {
   width: 44px;
   height: 44px;
-  color: var(--color-gold);
-  filter: drop-shadow(0 0 6px var(--color-gold-shadow));
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  transition: transform 0.3s ease;
 }
 
 .about-introduce-container {
@@ -261,19 +298,64 @@ p {
 }
 
 .about-icon {
-  border-radius: 20px;
-  padding: 8px;
-  background-color: var(--card-background);
+  border-radius: 24px;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
+  transition: all 0.3s ease;
 }
 
 .about-features {
-  background-color: #121624e6;
-  border: 1px solid #ffffff12;
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(18, 22, 36, 0.95), rgba(30, 35, 55, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
   flex-direction: column;
-  transition: border-color .3s, box-shadow .3s;
+  transition: all 0.4s ease;
   display: flex;
   padding: 0 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-features::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-secondary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.about-features:hover {
+  transform: translateY(-6px);
+  border-color: rgba(236, 72, 153, 0.4);
+  box-shadow: 0 16px 32px rgba(139, 92, 246, 0.2);
+}
+
+.about-features:hover::before {
+  opacity: 0.03;
+}
+
+.about-features:hover .about-icon {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 10px 28px rgba(236, 72, 153, 0.4);
+}
+
+/* Different gradient for each about feature */
+.about-features:nth-child(1) .about-icon {
+  background: linear-gradient(135deg, var(--color-info), var(--color-primary));
+}
+
+.about-features:nth-child(2) .about-icon {
+  background: linear-gradient(135deg, var(--color-warning), var(--color-success));
+}
+
+.about-features:nth-child(3) .about-icon {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
 }
 /* ================================
    BLOG
@@ -306,12 +388,32 @@ p {
 .contact-icon-item img {
   width: 22px;
   height: 22px;
-  color: var(--color-gold);
-  filter: drop-shadow(0 0 6px var(--color-gold-shadow));
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+  transition: transform 0.3s ease;
 }
 
 .contact-icon {
   border-radius: 20px;
-  padding: 8px;
-  background-color: var(--card-background);
+  padding: 12px;
+  background: linear-gradient(135deg, var(--color-info), var(--color-primary));
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 10px 28px rgba(59, 130, 246, 0.4);
+}
+
+/* Different colors for social icons */
+.contact-icon-item > *:nth-child(1) .contact-icon {
+  background: linear-gradient(135deg, #5865F2, #7289DA); /* Discord blue */
+}
+
+.contact-icon-item > *:nth-child(2) .contact-icon {
+  background: linear-gradient(135deg, #1DA1F2, #4FC3F7); /* Twitter blue */
+}
+
+.contact-icon-item > *:nth-child(3) .contact-icon {
+  background: linear-gradient(135deg, #333333, #666666); /* GitHub dark */
 }
